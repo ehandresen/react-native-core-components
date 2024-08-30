@@ -1,28 +1,26 @@
-import { View, Alert, Button } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 export default function App() {
   return (
-    <View style={{ flex: 1, backgroundColor: 'plum', padding: 60 }}>
-      <Button title="alert" onPress={() => Alert.alert('invalid data')} />
-      <Button
-        title="alert2"
-        onPress={() => Alert.alert('invalid data', 'DOB incorrect')}
-      />
-      <Button
-        title="alert3"
-        onPress={() =>
-          Alert.alert('invalid data', 'DOB incorrect', [
-            {
-              text: 'cancel',
-              onPress: () => console.log('cancel pressed'),
-            },
-            {
-              text: 'ok',
-              onPress: () => console.log('ok pressed'),
-            },
-          ])
-        }
-      />
+    <View style={styles.container}>
+      <Text style={styles.title}>stylesheet api</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#eaeaea',
+    padding: 60,
+  },
+  title: {
+    fontSize: 30,
+    borderWidth: 4,
+    borderRadius: 8,
+    textAlign: 'center',
+    padding: 10,
+    fontWeight: '700',
+    backgroundColor: '#61dafb',
+  },
+});
