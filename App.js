@@ -1,30 +1,30 @@
-import { View, Button, Image, Text, Modal } from 'react-native';
+import { View, StatusBar, Button } from 'react-native';
 import { useState } from 'react';
 
 // using require (commonJS) is preferred when dealing with static assets like images in react-native
 const logoImg = require('./assets/adaptive-icon.png');
 
 export default function App() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [showStatusBar, setShowStatusBar] = useState(false);
+  const [color, setColor] = useState('dark-content');
+
+  const changeColor = () => {
+    if (color === 'dark-content') {
+      setColor('light-content');
+      return;
+    }
+
+    setColor('dark-content');
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: 'plum', padding: 60 }}>
+      <StatusBar barStyle={color} hidden={showStatusBar} />
+      <Button title="change color" onPress={changeColor} />
       <Button
-        title="press"
-        onPress={() => setIsModalVisible(true)}
-        color="midnightblue"
+        title="show/hide statusbar"
+        onPress={() => setShowStatusBar(!showStatusBar)}
       />
-      <Modal
-        visible={isModalVisible}
-        onRequestClose={() => setIsModalVisible(false)} // android back button, ios gesture
-        animationType="slide"
-        presentationStyle="pageSheet"
-      >
-        <View style={{ flex: 1, backgroundColor: 'lightblue', padding: 60 }}>
-          <Text>Modal content</Text>
-          <Button title="close" onPress={() => setIsModalVisible(false)} />
-        </View>
-      </Modal>
     </View>
   );
 }
