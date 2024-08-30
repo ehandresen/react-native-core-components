@@ -1,4 +1,6 @@
 import { View, Text, Image, ImageBackground } from 'react-native';
+
+// using require (commonJS) is preferred when dealing with static assets like images in react-native
 const logoImg = require('./assets/adaptive-icon.png');
 
 export default function App() {
